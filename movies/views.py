@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 
 
-from .models import Movie
+from .models import Movie,Category
 from .serializer import MovieSerializer,MovieCatSerializer
 
 class MovieListCreateView(ListCreateAPIView):
@@ -10,4 +10,12 @@ class MovieListCreateView(ListCreateAPIView):
     queryset=Movie.objects.all()
 
 
+class MovieRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class=MovieSerializer
+    lookup_field='id'
+    queryset=Movie.objects.all()
 
+
+class MovieCategoryView(ListCreateAPIView):
+    serializer_class=MovieCatSerializer
+    queryset=Category.objects.all()
