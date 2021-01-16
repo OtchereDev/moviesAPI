@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'movie_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -133,3 +133,9 @@ STATIC_ROOT=BASE_DIR / 'static_root/'
 STATICFILES_DIRS=[
     BASE_DIR/'static'
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 1
+}
